@@ -1,5 +1,4 @@
 // tailwind.config.ts
-import { defineConfig } from 'tailwindcss';
 import type { Config } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
@@ -13,6 +12,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        green: {
+          100: '#DFFFD6',
+          500: '#4CAF50',
+          600: '#388E3C',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -64,6 +68,8 @@ const config: Config = {
         stacker: ['Stacker', 'sans-serif'],
         sans: ['Poppins', 'sans-serif'],
         heading: ['Merriweather', 'serif'],
+        libre: ["Libre Baskerville", 'serif'],
+        spicy: ['"Spicy Rice"', 'cursive'],
       },
       fontSize: {
         '10': ['10px', '14px'],

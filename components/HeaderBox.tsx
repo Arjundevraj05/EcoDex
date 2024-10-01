@@ -16,7 +16,7 @@ const lato = Lato({
 
 const HeaderBox = ({ user }) => {
   return (
-    <div className="py-6 ml-56 flex flex-col w-4/5 justify-start gap-1 md:flex-row items-center border-b pb-5">
+    <div className=" py-6 ml-56 flex flex-col w-4/5 justify-start gap-1 md:flex-row items-center border-b pb-5">
       <div>
         <h1 className='text-24 lg:text-30 font-poppins font-semibold text-gray-800'>
           Welcome Back,  

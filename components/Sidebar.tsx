@@ -9,10 +9,13 @@ import {
   MenuAlt2Icon,
   XIcon,
 } from '@heroicons/react/outline';
+import { useRouter } from 'next/navigation'; // For navigation
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [loaded, setLoaded] = useState(false); // State to track page load
+  const [activeItem, setActiveItem] = useState('Home'); // Track the active menu item
+  const router = useRouter(); // Next.js router for navigation
 
   useEffect(() => {
     // Set loaded to true after component mounts to trigger transition
@@ -25,6 +28,12 @@ const Sidebar = () => {
     { name: 'Map', icon: MapIcon, href: '/map' },
     { name: 'Live Camera Feed', icon: CameraIcon, href: '/live-camera' },
   ];
+
+  // Handle click for navigation and setting active state
+  const handleNavigation = (item: string, href: string) => {
+    setActiveItem(item);
+    router.push(href);
+  };
 
   return (
     <>
@@ -65,13 +74,21 @@ const Sidebar = () => {
             <ul className="space-y-1">
               {navigation.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="flex items-center px-4 py-3 text-medium font-medium text-gray-700 transition-all duration-200 rounded-md hover:bg-gray-100 hover:text-green-600"
+                  <button
+                    onClick={() => handleNavigation(item.name, item.href)} // Redirect and set active state
+                    className={`flex items-center w-full px-4 py-3 text-medium font-medium transition-all duration-200 rounded-md ${
+                      activeItem === item.name
+                        ? 'bg-green-100 text-green-600' // Active color
+                        : 'text-gray-700 hover:bg-gray-100 hover:text-green-600'
+                    }`}
                   >
-                    <item.icon className="h-5 w-5 text-gray-500" />
+                    <item.icon
+                      className={`h-6 w-6 ${
+                        activeItem === item.name ? 'text-green-600' : 'text-gray-500'
+                      }`}
+                    />
                     <span className="ml-4">{item.name}</span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

@@ -1,36 +1,44 @@
 "use client"; // This ensures that the page is treated as a Client Component
 
 import React from "react";
+import {Leaf}  from 'lucide-react'
 import HeaderBox from "@/components/HeaderBox";
 import Status1 from "@/components/Status1";
 import dynamic from "next/dynamic";
 
-// Dynamically import the MapComponent with SSR disabled
-const MapComponent = dynamic(() => import('@/components/MapComponent'), {
-  ssr: false,
-});
+function AnimatedGlobe() {
+  return (
+    <div className="relative w-32 h-32 mx-auto mb-8">
+      <div className="absolute inset-0 rounded-full bg-green-500 opacity-20 animate-pulse"></div>
+      <div className="absolute inset-2 rounded-full bg-green-400 opacity-40 animate-ping"></div>
+      <div className="absolute inset-4 rounded-full bg-green-300 opacity-60 animate-spin"></div>
+      <div className="absolute inset-6 rounded-full bg-green-200 opacity-80 animate-bounce"></div>
+      <Leaf className="absolute inset-0 m-auto h-16 w-16 text-green-600 animate-pulse" />
+    </div>
+  )
+}
 
 const Page = () => {
   const user = { name: "John Doe" };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100 font-sans">
+    <div className="flex flex-col items-center min-h-screen bg-green-50 font-sans">
       <HeaderBox user={user} />
-      <Status1 />
 
       {/* Refined Heading for Ragbot Location */}
-      <div className="mt-8">
-        <h2 className="text-3xl font-stacker font-bold text-gray-800 tracking-wide text-center">
-          <span className="text-green-800">
-            RAG-ED Location
-          </span>
-        </h2>
+      <div className="ml-40 mt-5 text-center mb-20">
+        <AnimatedGlobe />
+        <h1 className="text-6xl font-bold mb-6 text-gray-800 tracking-tight">
+        Revolutionize <br/><span className="text-green-600">Waste Management</span>
+        </h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+        With Eco-Dex and RAG-ED, experience a smarter, greener approach to waste collection!
+        </p>
+        <div className="mt-8">
+        <Status1 />
+      </div>
       </div>
 
-      {/* Map Section */}
-      <div className="w-full max-w-2xl p-6 bg-white shadow-lg rounded-lg mt-6 border-t-4 border-green-500">
-        <MapComponent />
-      </div>
     </div>
   );
 };
