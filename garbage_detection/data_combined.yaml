@@ -1,0 +1,20 @@
+names:
+- BIODEGRADABLE
+- CARDBOARD
+- GLASS
+- METAL
+- PAPER
+- PLASTIC
+nc: 6
+test:
+- datasets/GARBAGE-CLASSIFICATION-3-1/test
+- datasets/Trash-Detection-1/test/images
+- datasets/TrashClass-2/test/images
+train:
+- datasets/GARBAGE-CLASSIFICATION-3-1/train/images
+- datasets/Trash-Detection-1/train/images
+- datasets/TrashClass-2/train/images
+val:
+- datasets/GARBAGE-CLASSIFICATION-3-1/valid/images
+- datasets/Trash-Detection-1/valid/images
+- datasets/TrashClass-2/train/images
